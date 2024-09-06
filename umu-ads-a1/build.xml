@@ -1,0 +1,70 @@
+<project name="riot" default="dist" basedir=".">
+  <description>
+    umu.ads.a1
+  </description>
+
+  <!-- global properties -->
+  <property name="lib" location="lib"/>
+  <property name="src" location="src"/>
+  <property name="build" location="build"/>
+  <property name="jarfile" location="umu-ads-a1.jar"/>
+<!--
+  <property name="mainclass" value="se.umu.cs.ads.test.Test"/>
+-->
+  <property name="mainclass" value="se.umu.cs.ads.A1"/>
+
+  <!-- classpath -->
+  <path id="classpath.lib">
+    <fileset dir="${lib}">
+      <include name="**/*.jar"/>
+    </fileset>
+  </path>
+
+  <target name="init">
+    <!-- create time stamp -->
+    <tstamp/>
+
+    <!-- create build directory structure -->
+    <mkdir dir="${build}"/>
+  </target>
+
+  <target name="compile" depends="init" description="compile source">
+    <!-- compile from ${src} into ${build} -->
+<!--
+    <javac includeantruntime="false" debug="true"
+           classpath="${lib}" srcdir="${src}" destdir="${build}"/>
+-->
+    <javac includeantruntime="false" debug="true"
+           srcdir="${src}" destdir="${build}">
+      <compilerarg value="-Xlint:unchecked"/>
+      <compilerarg value="-parameters"/>
+      <classpath refid="classpath.lib"/>
+    </javac>
+
+    <!-- delete test classes -->
+<!--
+    <delete>
+      <fileset dir="${build}" includes="**/*$Test.class"/>
+    </delete>
+-->
+  </target>
+
+  <target name="dist" depends="compile" description="generate distribution" >
+    <jar jarfile="${jarfile}" basedir="${build}">
+      <manifest>
+        <attribute name="Main-Class" value="${mainclass}"/>
+      </manifest>
+    </jar>
+
+    <delete dir="${build}"/>
+  </target>
+
+  <target name="clean" description="clean up" >
+    <!-- Delete the ${build} and ${dist} directory trees -->
+    <delete dir="${build}"/>
+    <delete file="${jarfile}"/>
+    <delete>
+      <fileset dir="." includes="**/*.tmp"/>
+    </delete>
+  </target>
+</project>
