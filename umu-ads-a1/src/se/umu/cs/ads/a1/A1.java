@@ -1,5 +1,6 @@
 package se.umu.cs.ads.a1;
 
+import se.umu.cs.ads.a1.backend.GrpcMessengerBackend;
 import se.umu.cs.ads.a1.backend.InMemoryMessengerBackEnd;
 import se.umu.cs.ads.a1.clients.LogicTest;
 import se.umu.cs.ads.a1.clients.PerformanceTest;
@@ -35,7 +36,7 @@ public class A1
     {
       // defaults to example messenger implementation
       final String[] arguments = Util.filterFlags(args);
-      final String fqn = arguments.length > 0 ? arguments[0] : InMemoryMessengerBackEnd.class.getCanonicalName();
+      final String fqn = arguments.length > 0 ? arguments[0] : GrpcMessengerBackend.class.getCanonicalName();
       // dynamic class loading for messenger instantiation
       Messenger messenger = loadMessenger(fqn);
 
@@ -57,8 +58,9 @@ public class A1
         LogicTest test = new LogicTest(messenger);
         Topic topic = new Topic("/test/logic");
 
-        System.out.println("testing store/delete logic...");
-        test.testStoreAndDelete(Util.constructRandomMessage(username,topic,1024));
+        //System.out.println("testing store/delete logic...");
+        //test.testStoreAndDelete(Util.constructRandomMessage(username,topic,1024));
+        test.testStoreAndRetrieve(Util.constructRandomMessage(username,topic,1024));
       }
 
       // example performance test

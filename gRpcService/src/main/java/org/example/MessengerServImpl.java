@@ -30,7 +30,7 @@ class MessengerServiceImpl extends MessengerGrpc.MessengerImplBase {
 
     //----------------------------------------------------------
 
-    public void store (MessengerOuterClass.Message message, StreamObserver<Empty> responseObserver)
+    public void storeMessage (MessengerOuterClass.Message message, StreamObserver<MessengerOuterClass.Empty> responseObserver)
     {
         synchronized (this)
         {
@@ -42,7 +42,7 @@ class MessengerServiceImpl extends MessengerGrpc.MessengerImplBase {
             messageMap.put(messageWithTimestamp.getId(), messageWithTimestamp);
             getTopicBackEnd(messageWithTimestamp.getTopic()).add(messageWithTimestamp.getId());
             System.out.println("Message stored: " + messageWithTimestamp);
-            responseObserver.onNext(Empty.newBuilder().build());
+            responseObserver.onNext(MessengerOuterClass.Empty.newBuilder().build());
             responseObserver.onCompleted();
         }
     }
@@ -67,7 +67,7 @@ class MessengerServiceImpl extends MessengerGrpc.MessengerImplBase {
         }
     }
 
-    public void retrieve (MessengerOuterClass.MessageId message, StreamObserver<MessengerOuterClass.Message> responseObserver)
+    public void retrieveMessage (MessengerOuterClass.MessageId message, StreamObserver<MessengerOuterClass.Message> responseObserver)
     {
         synchronized (this)
         {
