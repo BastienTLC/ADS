@@ -49,7 +49,7 @@ public class InMemoryMessengerBackEnd
 	{
 	  synchronized (this)
 	  {
-	    message = message.copyWith(Timestamp.now());
+          message = message.copyWith(Timestamp.now());
   	  messageMap.put(message.getId(),message);
   	  getTopicBackEnd(message.getTopic()).add(message.getId());
 	  }
