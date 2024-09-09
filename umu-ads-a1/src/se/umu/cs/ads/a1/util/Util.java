@@ -143,6 +143,14 @@ public class Util
   {
     return Message.construct(username,topic,constructRandomContent(),constructRandomData(size));
   }
+  //----------------------------------------------------------
+  public static Message[] constructRandomMessages (Username username, Topic topic, int size, int count)
+  {
+    Message[] messages = new Message[count];
+    for (int i=0; i<count; i++)
+      messages[i] = constructRandomMessage(username,topic,size);
+    return messages;
+  }
 
 
   //----------------------------------------------------------

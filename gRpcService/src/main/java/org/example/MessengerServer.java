@@ -10,6 +10,7 @@ public class MessengerServer {
         // Construire le serveur
         Server server = ServerBuilder.forPort(50051)
                 .addService(new MessengerServiceImpl())
+                .maxInboundMessageSize(1024 * 1024 * 1024)
                 .build();
 
         // Démarrer le serveur

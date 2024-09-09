@@ -204,28 +204,28 @@ public final class MessengerGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<MessengerOuterClass.SubscribeRequest,
-      MessengerOuterClass.Subscription> getSubscribeMethod;
+      MessengerOuterClass.TopicBatch> getSubscribeMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Subscribe",
       requestType = MessengerOuterClass.SubscribeRequest.class,
-      responseType = MessengerOuterClass.Subscription.class,
+      responseType = MessengerOuterClass.TopicBatch.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<MessengerOuterClass.SubscribeRequest,
-      MessengerOuterClass.Subscription> getSubscribeMethod() {
-    io.grpc.MethodDescriptor<MessengerOuterClass.SubscribeRequest, MessengerOuterClass.Subscription> getSubscribeMethod;
+      MessengerOuterClass.TopicBatch> getSubscribeMethod() {
+    io.grpc.MethodDescriptor<MessengerOuterClass.SubscribeRequest, MessengerOuterClass.TopicBatch> getSubscribeMethod;
     if ((getSubscribeMethod = MessengerGrpc.getSubscribeMethod) == null) {
       synchronized (MessengerGrpc.class) {
         if ((getSubscribeMethod = MessengerGrpc.getSubscribeMethod) == null) {
           MessengerGrpc.getSubscribeMethod = getSubscribeMethod =
-              io.grpc.MethodDescriptor.<MessengerOuterClass.SubscribeRequest, MessengerOuterClass.Subscription>newBuilder()
+              io.grpc.MethodDescriptor.<MessengerOuterClass.SubscribeRequest, MessengerOuterClass.TopicBatch>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Subscribe"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   MessengerOuterClass.SubscribeRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  MessengerOuterClass.Subscription.getDefaultInstance()))
+                  MessengerOuterClass.TopicBatch.getDefaultInstance()))
               .setSchemaDescriptor(new MessengerMethodDescriptorSupplier("Subscribe"))
               .build();
         }
@@ -234,29 +234,29 @@ public final class MessengerGrpc {
     return getSubscribeMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<MessengerOuterClass.SubscriptionId,
-      MessengerOuterClass.Empty> getUnsubscribeMethod;
+  private static volatile io.grpc.MethodDescriptor<MessengerOuterClass.SubscribeRequest,
+      MessengerOuterClass.TopicBatch> getUnsubscribeMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Unsubscribe",
-      requestType = MessengerOuterClass.SubscriptionId.class,
-      responseType = MessengerOuterClass.Empty.class,
+      requestType = MessengerOuterClass.SubscribeRequest.class,
+      responseType = MessengerOuterClass.TopicBatch.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<MessengerOuterClass.SubscriptionId,
-      MessengerOuterClass.Empty> getUnsubscribeMethod() {
-    io.grpc.MethodDescriptor<MessengerOuterClass.SubscriptionId, MessengerOuterClass.Empty> getUnsubscribeMethod;
+  public static io.grpc.MethodDescriptor<MessengerOuterClass.SubscribeRequest,
+      MessengerOuterClass.TopicBatch> getUnsubscribeMethod() {
+    io.grpc.MethodDescriptor<MessengerOuterClass.SubscribeRequest, MessengerOuterClass.TopicBatch> getUnsubscribeMethod;
     if ((getUnsubscribeMethod = MessengerGrpc.getUnsubscribeMethod) == null) {
       synchronized (MessengerGrpc.class) {
         if ((getUnsubscribeMethod = MessengerGrpc.getUnsubscribeMethod) == null) {
           MessengerGrpc.getUnsubscribeMethod = getUnsubscribeMethod =
-              io.grpc.MethodDescriptor.<MessengerOuterClass.SubscriptionId, MessengerOuterClass.Empty>newBuilder()
+              io.grpc.MethodDescriptor.<MessengerOuterClass.SubscribeRequest, MessengerOuterClass.TopicBatch>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Unsubscribe"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  MessengerOuterClass.SubscriptionId.getDefaultInstance()))
+                  MessengerOuterClass.SubscribeRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  MessengerOuterClass.Empty.getDefaultInstance()))
+                  MessengerOuterClass.TopicBatch.getDefaultInstance()))
               .setSchemaDescriptor(new MessengerMethodDescriptorSupplier("Unsubscribe"))
               .build();
         }
@@ -266,28 +266,28 @@ public final class MessengerGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<MessengerOuterClass.Empty,
-      MessengerOuterClass.Username> getListUserMethod;
+      MessengerOuterClass.UsernameBatch> getListUserMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "ListUser",
       requestType = MessengerOuterClass.Empty.class,
-      responseType = MessengerOuterClass.Username.class,
+      responseType = MessengerOuterClass.UsernameBatch.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<MessengerOuterClass.Empty,
-      MessengerOuterClass.Username> getListUserMethod() {
-    io.grpc.MethodDescriptor<MessengerOuterClass.Empty, MessengerOuterClass.Username> getListUserMethod;
+      MessengerOuterClass.UsernameBatch> getListUserMethod() {
+    io.grpc.MethodDescriptor<MessengerOuterClass.Empty, MessengerOuterClass.UsernameBatch> getListUserMethod;
     if ((getListUserMethod = MessengerGrpc.getListUserMethod) == null) {
       synchronized (MessengerGrpc.class) {
         if ((getListUserMethod = MessengerGrpc.getListUserMethod) == null) {
           MessengerGrpc.getListUserMethod = getListUserMethod =
-              io.grpc.MethodDescriptor.<MessengerOuterClass.Empty, MessengerOuterClass.Username>newBuilder()
+              io.grpc.MethodDescriptor.<MessengerOuterClass.Empty, MessengerOuterClass.UsernameBatch>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ListUser"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   MessengerOuterClass.Empty.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  MessengerOuterClass.Username.getDefaultInstance()))
+                  MessengerOuterClass.UsernameBatch.getDefaultInstance()))
               .setSchemaDescriptor(new MessengerMethodDescriptorSupplier("ListUser"))
               .build();
         }
@@ -297,28 +297,28 @@ public final class MessengerGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<MessengerOuterClass.Empty,
-      MessengerOuterClass.Topic> getListTopicMethod;
+      MessengerOuterClass.TopicBatch> getListTopicMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "ListTopic",
       requestType = MessengerOuterClass.Empty.class,
-      responseType = MessengerOuterClass.Topic.class,
+      responseType = MessengerOuterClass.TopicBatch.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<MessengerOuterClass.Empty,
-      MessengerOuterClass.Topic> getListTopicMethod() {
-    io.grpc.MethodDescriptor<MessengerOuterClass.Empty, MessengerOuterClass.Topic> getListTopicMethod;
+      MessengerOuterClass.TopicBatch> getListTopicMethod() {
+    io.grpc.MethodDescriptor<MessengerOuterClass.Empty, MessengerOuterClass.TopicBatch> getListTopicMethod;
     if ((getListTopicMethod = MessengerGrpc.getListTopicMethod) == null) {
       synchronized (MessengerGrpc.class) {
         if ((getListTopicMethod = MessengerGrpc.getListTopicMethod) == null) {
           MessengerGrpc.getListTopicMethod = getListTopicMethod =
-              io.grpc.MethodDescriptor.<MessengerOuterClass.Empty, MessengerOuterClass.Topic>newBuilder()
+              io.grpc.MethodDescriptor.<MessengerOuterClass.Empty, MessengerOuterClass.TopicBatch>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ListTopic"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   MessengerOuterClass.Empty.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  MessengerOuterClass.Topic.getDefaultInstance()))
+                  MessengerOuterClass.TopicBatch.getDefaultInstance()))
               .setSchemaDescriptor(new MessengerMethodDescriptorSupplier("ListTopic"))
               .build();
         }
@@ -328,28 +328,28 @@ public final class MessengerGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<MessengerOuterClass.Username,
-      MessengerOuterClass.Topic> getListTopicByUserMethod;
+      MessengerOuterClass.TopicBatch> getListTopicByUserMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "ListTopicByUser",
       requestType = MessengerOuterClass.Username.class,
-      responseType = MessengerOuterClass.Topic.class,
+      responseType = MessengerOuterClass.TopicBatch.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<MessengerOuterClass.Username,
-      MessengerOuterClass.Topic> getListTopicByUserMethod() {
-    io.grpc.MethodDescriptor<MessengerOuterClass.Username, MessengerOuterClass.Topic> getListTopicByUserMethod;
+      MessengerOuterClass.TopicBatch> getListTopicByUserMethod() {
+    io.grpc.MethodDescriptor<MessengerOuterClass.Username, MessengerOuterClass.TopicBatch> getListTopicByUserMethod;
     if ((getListTopicByUserMethod = MessengerGrpc.getListTopicByUserMethod) == null) {
       synchronized (MessengerGrpc.class) {
         if ((getListTopicByUserMethod = MessengerGrpc.getListTopicByUserMethod) == null) {
           MessengerGrpc.getListTopicByUserMethod = getListTopicByUserMethod =
-              io.grpc.MethodDescriptor.<MessengerOuterClass.Username, MessengerOuterClass.Topic>newBuilder()
+              io.grpc.MethodDescriptor.<MessengerOuterClass.Username, MessengerOuterClass.TopicBatch>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ListTopicByUser"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   MessengerOuterClass.Username.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  MessengerOuterClass.Topic.getDefaultInstance()))
+                  MessengerOuterClass.TopicBatch.getDefaultInstance()))
               .setSchemaDescriptor(new MessengerMethodDescriptorSupplier("ListTopicByUser"))
               .build();
         }
@@ -359,28 +359,28 @@ public final class MessengerGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<MessengerOuterClass.Topic,
-      MessengerOuterClass.Username> getListSubscriberMethod;
+      MessengerOuterClass.UsernameBatch> getListSubscriberMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "ListSubscriber",
       requestType = MessengerOuterClass.Topic.class,
-      responseType = MessengerOuterClass.Username.class,
+      responseType = MessengerOuterClass.UsernameBatch.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<MessengerOuterClass.Topic,
-      MessengerOuterClass.Username> getListSubscriberMethod() {
-    io.grpc.MethodDescriptor<MessengerOuterClass.Topic, MessengerOuterClass.Username> getListSubscriberMethod;
+      MessengerOuterClass.UsernameBatch> getListSubscriberMethod() {
+    io.grpc.MethodDescriptor<MessengerOuterClass.Topic, MessengerOuterClass.UsernameBatch> getListSubscriberMethod;
     if ((getListSubscriberMethod = MessengerGrpc.getListSubscriberMethod) == null) {
       synchronized (MessengerGrpc.class) {
         if ((getListSubscriberMethod = MessengerGrpc.getListSubscriberMethod) == null) {
           MessengerGrpc.getListSubscriberMethod = getListSubscriberMethod =
-              io.grpc.MethodDescriptor.<MessengerOuterClass.Topic, MessengerOuterClass.Username>newBuilder()
+              io.grpc.MethodDescriptor.<MessengerOuterClass.Topic, MessengerOuterClass.UsernameBatch>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ListSubscriber"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   MessengerOuterClass.Topic.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  MessengerOuterClass.Username.getDefaultInstance()))
+                  MessengerOuterClass.UsernameBatch.getDefaultInstance()))
               .setSchemaDescriptor(new MessengerMethodDescriptorSupplier("ListSubscriber"))
               .build();
         }
@@ -390,28 +390,28 @@ public final class MessengerGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<MessengerOuterClass.Username,
-      MessengerOuterClass.MessageId> getListMessageByUserMethod;
+      MessengerOuterClass.MessageIdBatch> getListMessageByUserMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "ListMessageByUser",
       requestType = MessengerOuterClass.Username.class,
-      responseType = MessengerOuterClass.MessageId.class,
+      responseType = MessengerOuterClass.MessageIdBatch.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<MessengerOuterClass.Username,
-      MessengerOuterClass.MessageId> getListMessageByUserMethod() {
-    io.grpc.MethodDescriptor<MessengerOuterClass.Username, MessengerOuterClass.MessageId> getListMessageByUserMethod;
+      MessengerOuterClass.MessageIdBatch> getListMessageByUserMethod() {
+    io.grpc.MethodDescriptor<MessengerOuterClass.Username, MessengerOuterClass.MessageIdBatch> getListMessageByUserMethod;
     if ((getListMessageByUserMethod = MessengerGrpc.getListMessageByUserMethod) == null) {
       synchronized (MessengerGrpc.class) {
         if ((getListMessageByUserMethod = MessengerGrpc.getListMessageByUserMethod) == null) {
           MessengerGrpc.getListMessageByUserMethod = getListMessageByUserMethod =
-              io.grpc.MethodDescriptor.<MessengerOuterClass.Username, MessengerOuterClass.MessageId>newBuilder()
+              io.grpc.MethodDescriptor.<MessengerOuterClass.Username, MessengerOuterClass.MessageIdBatch>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ListMessageByUser"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   MessengerOuterClass.Username.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  MessengerOuterClass.MessageId.getDefaultInstance()))
+                  MessengerOuterClass.MessageIdBatch.getDefaultInstance()))
               .setSchemaDescriptor(new MessengerMethodDescriptorSupplier("ListMessageByUser"))
               .build();
         }
@@ -421,28 +421,28 @@ public final class MessengerGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<MessengerOuterClass.Topic,
-      MessengerOuterClass.MessageId> getListMessageByTopicMethod;
+      MessengerOuterClass.MessageIdBatch> getListMessageByTopicMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "ListMessageByTopic",
       requestType = MessengerOuterClass.Topic.class,
-      responseType = MessengerOuterClass.MessageId.class,
+      responseType = MessengerOuterClass.MessageIdBatch.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<MessengerOuterClass.Topic,
-      MessengerOuterClass.MessageId> getListMessageByTopicMethod() {
-    io.grpc.MethodDescriptor<MessengerOuterClass.Topic, MessengerOuterClass.MessageId> getListMessageByTopicMethod;
+      MessengerOuterClass.MessageIdBatch> getListMessageByTopicMethod() {
+    io.grpc.MethodDescriptor<MessengerOuterClass.Topic, MessengerOuterClass.MessageIdBatch> getListMessageByTopicMethod;
     if ((getListMessageByTopicMethod = MessengerGrpc.getListMessageByTopicMethod) == null) {
       synchronized (MessengerGrpc.class) {
         if ((getListMessageByTopicMethod = MessengerGrpc.getListMessageByTopicMethod) == null) {
           MessengerGrpc.getListMessageByTopicMethod = getListMessageByTopicMethod =
-              io.grpc.MethodDescriptor.<MessengerOuterClass.Topic, MessengerOuterClass.MessageId>newBuilder()
+              io.grpc.MethodDescriptor.<MessengerOuterClass.Topic, MessengerOuterClass.MessageIdBatch>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ListMessageByTopic"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   MessengerOuterClass.Topic.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  MessengerOuterClass.MessageId.getDefaultInstance()))
+                  MessengerOuterClass.MessageIdBatch.getDefaultInstance()))
               .setSchemaDescriptor(new MessengerMethodDescriptorSupplier("ListMessageByTopic"))
               .build();
         }
@@ -544,56 +544,56 @@ public final class MessengerGrpc {
     /**
      */
     public void subscribe(MessengerOuterClass.SubscribeRequest request,
-        io.grpc.stub.StreamObserver<MessengerOuterClass.Subscription> responseObserver) {
+        io.grpc.stub.StreamObserver<MessengerOuterClass.TopicBatch> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSubscribeMethod(), responseObserver);
     }
 
     /**
      */
-    public void unsubscribe(MessengerOuterClass.SubscriptionId request,
-        io.grpc.stub.StreamObserver<MessengerOuterClass.Empty> responseObserver) {
+    public void unsubscribe(MessengerOuterClass.SubscribeRequest request,
+        io.grpc.stub.StreamObserver<MessengerOuterClass.TopicBatch> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUnsubscribeMethod(), responseObserver);
     }
 
     /**
      */
     public void listUser(MessengerOuterClass.Empty request,
-        io.grpc.stub.StreamObserver<MessengerOuterClass.Username> responseObserver) {
+        io.grpc.stub.StreamObserver<MessengerOuterClass.UsernameBatch> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getListUserMethod(), responseObserver);
     }
 
     /**
      */
     public void listTopic(MessengerOuterClass.Empty request,
-        io.grpc.stub.StreamObserver<MessengerOuterClass.Topic> responseObserver) {
+        io.grpc.stub.StreamObserver<MessengerOuterClass.TopicBatch> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getListTopicMethod(), responseObserver);
     }
 
     /**
      */
     public void listTopicByUser(MessengerOuterClass.Username request,
-        io.grpc.stub.StreamObserver<MessengerOuterClass.Topic> responseObserver) {
+        io.grpc.stub.StreamObserver<MessengerOuterClass.TopicBatch> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getListTopicByUserMethod(), responseObserver);
     }
 
     /**
      */
     public void listSubscriber(MessengerOuterClass.Topic request,
-        io.grpc.stub.StreamObserver<MessengerOuterClass.Username> responseObserver) {
+        io.grpc.stub.StreamObserver<MessengerOuterClass.UsernameBatch> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getListSubscriberMethod(), responseObserver);
     }
 
     /**
      */
     public void listMessageByUser(MessengerOuterClass.Username request,
-        io.grpc.stub.StreamObserver<MessengerOuterClass.MessageId> responseObserver) {
+        io.grpc.stub.StreamObserver<MessengerOuterClass.MessageIdBatch> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getListMessageByUserMethod(), responseObserver);
     }
 
     /**
      */
     public void listMessageByTopic(MessengerOuterClass.Topic request,
-        io.grpc.stub.StreamObserver<MessengerOuterClass.MessageId> responseObserver) {
+        io.grpc.stub.StreamObserver<MessengerOuterClass.MessageIdBatch> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getListMessageByTopicMethod(), responseObserver);
     }
 
@@ -646,56 +646,56 @@ public final class MessengerGrpc {
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 MessengerOuterClass.SubscribeRequest,
-                MessengerOuterClass.Subscription>(
+                MessengerOuterClass.TopicBatch>(
                   this, METHODID_SUBSCRIBE)))
           .addMethod(
             getUnsubscribeMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                MessengerOuterClass.SubscriptionId,
-                MessengerOuterClass.Empty>(
+                MessengerOuterClass.SubscribeRequest,
+                MessengerOuterClass.TopicBatch>(
                   this, METHODID_UNSUBSCRIBE)))
           .addMethod(
             getListUserMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 MessengerOuterClass.Empty,
-                MessengerOuterClass.Username>(
+                MessengerOuterClass.UsernameBatch>(
                   this, METHODID_LIST_USER)))
           .addMethod(
             getListTopicMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 MessengerOuterClass.Empty,
-                MessengerOuterClass.Topic>(
+                MessengerOuterClass.TopicBatch>(
                   this, METHODID_LIST_TOPIC)))
           .addMethod(
             getListTopicByUserMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 MessengerOuterClass.Username,
-                MessengerOuterClass.Topic>(
+                MessengerOuterClass.TopicBatch>(
                   this, METHODID_LIST_TOPIC_BY_USER)))
           .addMethod(
             getListSubscriberMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 MessengerOuterClass.Topic,
-                MessengerOuterClass.Username>(
+                MessengerOuterClass.UsernameBatch>(
                   this, METHODID_LIST_SUBSCRIBER)))
           .addMethod(
             getListMessageByUserMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 MessengerOuterClass.Username,
-                MessengerOuterClass.MessageId>(
+                MessengerOuterClass.MessageIdBatch>(
                   this, METHODID_LIST_MESSAGE_BY_USER)))
           .addMethod(
             getListMessageByTopicMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 MessengerOuterClass.Topic,
-                MessengerOuterClass.MessageId>(
+                MessengerOuterClass.MessageIdBatch>(
                   this, METHODID_LIST_MESSAGE_BY_TOPIC)))
           .build();
     }
@@ -709,7 +709,7 @@ public final class MessengerGrpc {
       super(channel, callOptions);
     }
 
-    @Override
+    @java.lang.Override
     protected MessengerStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new MessengerStub(channel, callOptions);
@@ -766,15 +766,15 @@ public final class MessengerGrpc {
     /**
      */
     public void subscribe(MessengerOuterClass.SubscribeRequest request,
-        io.grpc.stub.StreamObserver<MessengerOuterClass.Subscription> responseObserver) {
+        io.grpc.stub.StreamObserver<MessengerOuterClass.TopicBatch> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getSubscribeMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void unsubscribe(MessengerOuterClass.SubscriptionId request,
-        io.grpc.stub.StreamObserver<MessengerOuterClass.Empty> responseObserver) {
+    public void unsubscribe(MessengerOuterClass.SubscribeRequest request,
+        io.grpc.stub.StreamObserver<MessengerOuterClass.TopicBatch> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getUnsubscribeMethod(), getCallOptions()), request, responseObserver);
     }
@@ -782,7 +782,7 @@ public final class MessengerGrpc {
     /**
      */
     public void listUser(MessengerOuterClass.Empty request,
-        io.grpc.stub.StreamObserver<MessengerOuterClass.Username> responseObserver) {
+        io.grpc.stub.StreamObserver<MessengerOuterClass.UsernameBatch> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getListUserMethod(), getCallOptions()), request, responseObserver);
     }
@@ -790,7 +790,7 @@ public final class MessengerGrpc {
     /**
      */
     public void listTopic(MessengerOuterClass.Empty request,
-        io.grpc.stub.StreamObserver<MessengerOuterClass.Topic> responseObserver) {
+        io.grpc.stub.StreamObserver<MessengerOuterClass.TopicBatch> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getListTopicMethod(), getCallOptions()), request, responseObserver);
     }
@@ -798,7 +798,7 @@ public final class MessengerGrpc {
     /**
      */
     public void listTopicByUser(MessengerOuterClass.Username request,
-        io.grpc.stub.StreamObserver<MessengerOuterClass.Topic> responseObserver) {
+        io.grpc.stub.StreamObserver<MessengerOuterClass.TopicBatch> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getListTopicByUserMethod(), getCallOptions()), request, responseObserver);
     }
@@ -806,7 +806,7 @@ public final class MessengerGrpc {
     /**
      */
     public void listSubscriber(MessengerOuterClass.Topic request,
-        io.grpc.stub.StreamObserver<MessengerOuterClass.Username> responseObserver) {
+        io.grpc.stub.StreamObserver<MessengerOuterClass.UsernameBatch> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getListSubscriberMethod(), getCallOptions()), request, responseObserver);
     }
@@ -814,7 +814,7 @@ public final class MessengerGrpc {
     /**
      */
     public void listMessageByUser(MessengerOuterClass.Username request,
-        io.grpc.stub.StreamObserver<MessengerOuterClass.MessageId> responseObserver) {
+        io.grpc.stub.StreamObserver<MessengerOuterClass.MessageIdBatch> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getListMessageByUserMethod(), getCallOptions()), request, responseObserver);
     }
@@ -822,7 +822,7 @@ public final class MessengerGrpc {
     /**
      */
     public void listMessageByTopic(MessengerOuterClass.Topic request,
-        io.grpc.stub.StreamObserver<MessengerOuterClass.MessageId> responseObserver) {
+        io.grpc.stub.StreamObserver<MessengerOuterClass.MessageIdBatch> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getListMessageByTopicMethod(), getCallOptions()), request, responseObserver);
     }
@@ -836,7 +836,7 @@ public final class MessengerGrpc {
       super(channel, callOptions);
     }
 
-    @Override
+    @java.lang.Override
     protected MessengerBlockingStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new MessengerBlockingStub(channel, callOptions);
@@ -886,56 +886,56 @@ public final class MessengerGrpc {
 
     /**
      */
-    public MessengerOuterClass.Subscription subscribe(MessengerOuterClass.SubscribeRequest request) {
+    public MessengerOuterClass.TopicBatch subscribe(MessengerOuterClass.SubscribeRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getSubscribeMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public MessengerOuterClass.Empty unsubscribe(MessengerOuterClass.SubscriptionId request) {
+    public MessengerOuterClass.TopicBatch unsubscribe(MessengerOuterClass.SubscribeRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getUnsubscribeMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public MessengerOuterClass.Username listUser(MessengerOuterClass.Empty request) {
+    public MessengerOuterClass.UsernameBatch listUser(MessengerOuterClass.Empty request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getListUserMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public MessengerOuterClass.Topic listTopic(MessengerOuterClass.Empty request) {
+    public MessengerOuterClass.TopicBatch listTopic(MessengerOuterClass.Empty request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getListTopicMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public MessengerOuterClass.Topic listTopicByUser(MessengerOuterClass.Username request) {
+    public MessengerOuterClass.TopicBatch listTopicByUser(MessengerOuterClass.Username request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getListTopicByUserMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public MessengerOuterClass.Username listSubscriber(MessengerOuterClass.Topic request) {
+    public MessengerOuterClass.UsernameBatch listSubscriber(MessengerOuterClass.Topic request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getListSubscriberMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public MessengerOuterClass.MessageId listMessageByUser(MessengerOuterClass.Username request) {
+    public MessengerOuterClass.MessageIdBatch listMessageByUser(MessengerOuterClass.Username request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getListMessageByUserMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public MessengerOuterClass.MessageId listMessageByTopic(MessengerOuterClass.Topic request) {
+    public MessengerOuterClass.MessageIdBatch listMessageByTopic(MessengerOuterClass.Topic request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getListMessageByTopicMethod(), getCallOptions(), request);
     }
@@ -949,7 +949,7 @@ public final class MessengerGrpc {
       super(channel, callOptions);
     }
 
-    @Override
+    @java.lang.Override
     protected MessengerFutureStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new MessengerFutureStub(channel, callOptions);
@@ -1005,7 +1005,7 @@ public final class MessengerGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<MessengerOuterClass.Subscription> subscribe(
+    public com.google.common.util.concurrent.ListenableFuture<MessengerOuterClass.TopicBatch> subscribe(
         MessengerOuterClass.SubscribeRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getSubscribeMethod(), getCallOptions()), request);
@@ -1013,15 +1013,15 @@ public final class MessengerGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<MessengerOuterClass.Empty> unsubscribe(
-        MessengerOuterClass.SubscriptionId request) {
+    public com.google.common.util.concurrent.ListenableFuture<MessengerOuterClass.TopicBatch> unsubscribe(
+        MessengerOuterClass.SubscribeRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getUnsubscribeMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<MessengerOuterClass.Username> listUser(
+    public com.google.common.util.concurrent.ListenableFuture<MessengerOuterClass.UsernameBatch> listUser(
         MessengerOuterClass.Empty request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getListUserMethod(), getCallOptions()), request);
@@ -1029,7 +1029,7 @@ public final class MessengerGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<MessengerOuterClass.Topic> listTopic(
+    public com.google.common.util.concurrent.ListenableFuture<MessengerOuterClass.TopicBatch> listTopic(
         MessengerOuterClass.Empty request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getListTopicMethod(), getCallOptions()), request);
@@ -1037,7 +1037,7 @@ public final class MessengerGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<MessengerOuterClass.Topic> listTopicByUser(
+    public com.google.common.util.concurrent.ListenableFuture<MessengerOuterClass.TopicBatch> listTopicByUser(
         MessengerOuterClass.Username request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getListTopicByUserMethod(), getCallOptions()), request);
@@ -1045,7 +1045,7 @@ public final class MessengerGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<MessengerOuterClass.Username> listSubscriber(
+    public com.google.common.util.concurrent.ListenableFuture<MessengerOuterClass.UsernameBatch> listSubscriber(
         MessengerOuterClass.Topic request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getListSubscriberMethod(), getCallOptions()), request);
@@ -1053,7 +1053,7 @@ public final class MessengerGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<MessengerOuterClass.MessageId> listMessageByUser(
+    public com.google.common.util.concurrent.ListenableFuture<MessengerOuterClass.MessageIdBatch> listMessageByUser(
         MessengerOuterClass.Username request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getListMessageByUserMethod(), getCallOptions()), request);
@@ -1061,7 +1061,7 @@ public final class MessengerGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<MessengerOuterClass.MessageId> listMessageByTopic(
+    public com.google.common.util.concurrent.ListenableFuture<MessengerOuterClass.MessageIdBatch> listMessageByTopic(
         MessengerOuterClass.Topic request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getListMessageByTopicMethod(), getCallOptions()), request);
@@ -1096,8 +1096,8 @@ public final class MessengerGrpc {
       this.methodId = methodId;
     }
 
-    @Override
-    @SuppressWarnings("unchecked")
+    @java.lang.Override
+    @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_STORE_MESSAGE:
@@ -1126,43 +1126,43 @@ public final class MessengerGrpc {
           break;
         case METHODID_SUBSCRIBE:
           serviceImpl.subscribe((MessengerOuterClass.SubscribeRequest) request,
-              (io.grpc.stub.StreamObserver<MessengerOuterClass.Subscription>) responseObserver);
+              (io.grpc.stub.StreamObserver<MessengerOuterClass.TopicBatch>) responseObserver);
           break;
         case METHODID_UNSUBSCRIBE:
-          serviceImpl.unsubscribe((MessengerOuterClass.SubscriptionId) request,
-              (io.grpc.stub.StreamObserver<MessengerOuterClass.Empty>) responseObserver);
+          serviceImpl.unsubscribe((MessengerOuterClass.SubscribeRequest) request,
+              (io.grpc.stub.StreamObserver<MessengerOuterClass.TopicBatch>) responseObserver);
           break;
         case METHODID_LIST_USER:
           serviceImpl.listUser((MessengerOuterClass.Empty) request,
-              (io.grpc.stub.StreamObserver<MessengerOuterClass.Username>) responseObserver);
+              (io.grpc.stub.StreamObserver<MessengerOuterClass.UsernameBatch>) responseObserver);
           break;
         case METHODID_LIST_TOPIC:
           serviceImpl.listTopic((MessengerOuterClass.Empty) request,
-              (io.grpc.stub.StreamObserver<MessengerOuterClass.Topic>) responseObserver);
+              (io.grpc.stub.StreamObserver<MessengerOuterClass.TopicBatch>) responseObserver);
           break;
         case METHODID_LIST_TOPIC_BY_USER:
           serviceImpl.listTopicByUser((MessengerOuterClass.Username) request,
-              (io.grpc.stub.StreamObserver<MessengerOuterClass.Topic>) responseObserver);
+              (io.grpc.stub.StreamObserver<MessengerOuterClass.TopicBatch>) responseObserver);
           break;
         case METHODID_LIST_SUBSCRIBER:
           serviceImpl.listSubscriber((MessengerOuterClass.Topic) request,
-              (io.grpc.stub.StreamObserver<MessengerOuterClass.Username>) responseObserver);
+              (io.grpc.stub.StreamObserver<MessengerOuterClass.UsernameBatch>) responseObserver);
           break;
         case METHODID_LIST_MESSAGE_BY_USER:
           serviceImpl.listMessageByUser((MessengerOuterClass.Username) request,
-              (io.grpc.stub.StreamObserver<MessengerOuterClass.MessageId>) responseObserver);
+              (io.grpc.stub.StreamObserver<MessengerOuterClass.MessageIdBatch>) responseObserver);
           break;
         case METHODID_LIST_MESSAGE_BY_TOPIC:
           serviceImpl.listMessageByTopic((MessengerOuterClass.Topic) request,
-              (io.grpc.stub.StreamObserver<MessengerOuterClass.MessageId>) responseObserver);
+              (io.grpc.stub.StreamObserver<MessengerOuterClass.MessageIdBatch>) responseObserver);
           break;
         default:
           throw new AssertionError();
       }
     }
 
-    @Override
-    @SuppressWarnings("unchecked")
+    @java.lang.Override
+    @java.lang.SuppressWarnings("unchecked")
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
@@ -1176,12 +1176,12 @@ public final class MessengerGrpc {
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
     MessengerBaseDescriptorSupplier() {}
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
       return MessengerOuterClass.getDescriptor();
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
       return getFileDescriptor().findServiceByName("Messenger");
     }
@@ -1201,7 +1201,7 @@ public final class MessengerGrpc {
       this.methodName = methodName;
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Descriptors.MethodDescriptor getMethodDescriptor() {
       return getServiceDescriptor().findMethodByName(methodName);
     }

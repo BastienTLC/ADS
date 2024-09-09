@@ -6,6 +6,10 @@ message Username {
   string value = 1;
 }
 
+message UsernameBatch {
+  repeated Username usernames = 1;
+}
+
 message MessageId {
   string value = 1;
 }
@@ -17,6 +21,10 @@ message MessageIdBatch {
 message Topic {
   string value = 1;
   bool wildcard = 2;
+}
+
+message TopicBatch {
+  repeated Topic topics = 1;
 }
 
 message Content {
@@ -67,14 +75,14 @@ service Messenger {
   rpc RetrieveMessages(MessageIdBatch) returns (MessageBatch);
   rpc DeleteMessage(MessageId) returns (Empty);
   rpc DeleteMessages(MessageIdBatch) returns (Empty);
-  rpc Subscribe(SubscribeRequest) returns (Subscription);
-  rpc Unsubscribe(SubscriptionId) returns (Empty);
-  rpc ListUser(Empty) returns (Username);
-  rpc ListTopic(Empty) returns (Topic);
-  rpc ListTopicByUser(Username) returns (Topic);
-  rpc ListSubscriber(Topic) returns (Username);
-  rpc ListMessageByUser(Username) returns (MessageId);
-  rpc ListMessageByTopic(Topic) returns (MessageId);
+  rpc Subscribe(SubscribeRequest) returns (TopicBatch);
+  rpc Unsubscribe(SubscribeRequest) returns (TopicBatch);
+  rpc ListUser(Empty) returns (UsernameBatch);
+  rpc ListTopic(Empty) returns (TopicBatch);
+  rpc ListTopicByUser(Username) returns (TopicBatch);
+  rpc ListSubscriber(Topic) returns (UsernameBatch);
+  rpc ListMessageByUser(Username) returns (MessageIdBatch);
+  rpc ListMessageByTopic(Topic) returns (MessageIdBatch);
 }
 
 

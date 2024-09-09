@@ -59,8 +59,10 @@ public class A1
         Topic topic = new Topic("/test/logic");
 
         //System.out.println("testing store/delete logic...");
-        //test.testStoreAndDelete(Util.constructRandomMessage(username,topic,1024));
+        test.testStoreAndDelete(Util.constructRandomMessage(username,topic,1024));
         test.testStoreAndRetrieve(Util.constructRandomMessage(username,topic,1024));
+        test.testStoreAndRetrieve(Util.constructRandomMessages(username,topic,1024,10));
+        test.testSubscribeAndUnsubscribe(username,topic);
       }
 
       // example performance test

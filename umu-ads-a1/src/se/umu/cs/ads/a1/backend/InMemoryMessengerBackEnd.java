@@ -174,24 +174,24 @@ public class InMemoryMessengerBackEnd
 	}
 
   //----------------------------------------------------------
-	public Topic[] unsubscribe (Username username, Topic topic)
-	{
-    synchronized (this)
-    {
-      ArrayList<Topic> list = new ArrayList<>();
-      for (Subscription subscription : subscriptionMap.values())
-        if (subscription.getUsername().equals(username))
-          if (topic.match(subscription.getTopic()))
-          {
-            delete(subscription.getId());
-            list.add(subscription.getTopic());
-          }
+  public Topic[] unsubscribe (Username username, Topic topic)
+  {
+      synchronized (this)
+      {
+          ArrayList<Topic> list = new ArrayList<>();
+          for (Subscription subscription : subscriptionMap.values().toArray(new Subscription[subscriptionMap.size()]))
+              if (subscription.getUsername().equals(username))
+                  if (topic.match(subscription.getTopic()))
+                  {
+                      delete(subscription.getId());
+                      list.add(subscription.getTopic());
+                  }
 
-      Topic[] data = list.toArray(new Topic[list.size()]);
-      Arrays.sort(data);
-      return data;
-    }
-	}
+          Topic[] data = list.toArray(new Topic[list.size()]);
+          Arrays.sort(data);
+          return data;
+      }
+  }
 
 
   //----------------------------------------------------------
