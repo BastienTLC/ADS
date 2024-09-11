@@ -12,11 +12,11 @@ public interface Messenger
   // message interface
 
   //----------------------------------------------------------
-	/***
-	 * Store a message
-	 * @param message Message to be stored
-	 */
-	void store (Message message);
+  /***
+   * Store a message
+   * @param message Message to be stored
+   */
+  void store (Message message);
 
   //----------------------------------------------------------
   /***

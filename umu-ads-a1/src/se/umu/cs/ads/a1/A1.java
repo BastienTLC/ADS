@@ -2,6 +2,7 @@ package se.umu.cs.ads.a1;
 
 import se.umu.cs.ads.a1.backend.GrpcMessengerBackend;
 import se.umu.cs.ads.a1.backend.InMemoryMessengerBackEnd;
+import se.umu.cs.ads.a1.backend.RestMessengerBackend;
 import se.umu.cs.ads.a1.clients.LogicTest;
 import se.umu.cs.ads.a1.clients.PerformanceTest;
 import se.umu.cs.ads.a1.interfaces.Messenger;
@@ -36,7 +37,7 @@ public class A1
     {
       // defaults to example messenger implementation
       final String[] arguments = Util.filterFlags(args);
-      final String fqn = arguments.length > 0 ? arguments[0] : GrpcMessengerBackend.class.getCanonicalName();
+      final String fqn = arguments.length > 0 ? arguments[0] : InMemoryMessengerBackEnd.class.getCanonicalName();
       // dynamic class loading for messenger instantiation
       Messenger messenger = loadMessenger(fqn);
 
@@ -60,9 +61,11 @@ public class A1
 
         //System.out.println("testing store/delete logic...");
         test.testStoreAndDelete(Util.constructRandomMessage(username,topic,1024));
+        test.testStoreAndDelete(Util.constructRandomMessages(username,topic,1024,10));
         test.testStoreAndRetrieve(Util.constructRandomMessage(username,topic,1024));
         test.testStoreAndRetrieve(Util.constructRandomMessages(username,topic,1024,10));
         test.testSubscribeAndUnsubscribe(username,topic);
+        test.testClearAllMessages();
       }
 
       // example performance test
@@ -72,8 +75,13 @@ public class A1
 
         System.out.println("testing retrieval performance...");
         test.testMessageRetrieval(username,1000,1024);
-        test.testMessageRetrieval(username,100000,1024);
-        test.testMessageRetrieval(username,10000000,1024);
+        //test.testMessageRetrieval(username,100000,1024);
+        //test.testMessageRetrieval(username,10000000,1024);
+        test.testScalabilityWithNumberOfMessages(username,1000,1024,1000,10000);
+        test.testScalabilityWithMessageSize(username,1000,1000,1000,10000);
+        test.testBandwidthAndThroughput(username, 1000,1024);
+        test.testBandwidthAndThroughput(username, 100000,1024);
+
       }
     }
     catch (Exception e)

@@ -1,9 +1,6 @@
 package se.umu.cs.ads.a1.rest.interfaces;
 
-import se.umu.cs.ads.a1.rest.types.Message;
-import se.umu.cs.ads.a1.rest.types.MessageId;
-import se.umu.cs.ads.a1.rest.types.Topic;
-import se.umu.cs.ads.a1.rest.types.Username;
+import se.umu.cs.ads.a1.rest.types.*;
 
 public interface Messenger
 {
@@ -65,20 +62,18 @@ public interface Messenger
     //----------------------------------------------------------
     /***
      * Subscribe a user to a topic
-     * @param username Name of user
-     * @param topic Message topic
+     * @param subscriptionRequest Name of user and message topics
      * @return identifiers of created subscriptions
      */
-    Topic[] subscribe (Username username, Topic topic);
+    Topic[] subscribe (SubscriptionRequest subscriptionRequest);
 
     //----------------------------------------------------------
     /***
      * Unsubscribe a user from a topic
-     * @param username Name of user
-     * @param topic Message topics
+     * @param subscriptionRequest Name of user and message topics
      * @return identifiers of deleted subscriptions
      */
-    Topic[] unsubscribe (Username username, Topic topic);
+    Topic[] unsubscribe (SubscriptionRequest subscriptionRequest);
 
 
     //----------------------------------------------------------

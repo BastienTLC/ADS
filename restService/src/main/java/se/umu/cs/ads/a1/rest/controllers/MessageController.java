@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.*;
 
 @RestController
-@RequestMapping("/api/messages")
+@RequestMapping("/api/messenger")
 public class MessageController implements Messenger {
 
     private final HashMap<MessageId, Message> messageMap;
@@ -58,13 +58,13 @@ public class MessageController implements Messenger {
 
 
     @GetMapping("/{id}")
-    public Message retrieve(@RequestBody MessageId message) {
-        synchronized (this)
-        {
-            Message data = messageMap.get(message);
-            if (data == null)
-                throw new IllegalArgumentException("unrecognized message: '" + message + "'");
+        public Message retrieve(@PathVariable("id") MessageId messageId) {
+        synchronized (this) {
+            Message data = messageMap.get(messageId);
 
+            if (data == null) {
+                throw new IllegalArgumentException("unrecognized message: '" + messageId + "'");
+            }
             return data;
         }
     }
@@ -86,7 +86,7 @@ public class MessageController implements Messenger {
     }
 
     @Override
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public void delete(@RequestBody MessageId message) {
         synchronized (this)
         {
@@ -113,18 +113,18 @@ public class MessageController implements Messenger {
 
     @Override
     @PostMapping("/subscribe")
-    public Topic[] subscribe(@RequestBody Username username, @RequestBody Topic topic) {
-        synchronized (this)
-        {
+    public Topic[] subscribe(@RequestBody SubscriptionRequest subscriptionRequest) {
+        synchronized (this) {
+            Username username = subscriptionRequest.getUsername();
+            Topic topic = subscriptionRequest.getTopic();
             ArrayList<Topic> list = new ArrayList<>();
-            for (Topic t : topicMap.keySet())
-                if (topic.match(t))
-                {
-                    Subscription subscription = Subscription.construct(username,t);
+            for (Topic t : topicMap.keySet()) {
+                if (topic.match(t)) {
+                    Subscription subscription = Subscription.construct(username, t);
                     store(subscription);
                     list.add(subscription.getTopic());
                 }
-
+            }
             Topic[] data = list.toArray(new Topic[list.size()]);
             Arrays.sort(data);
             return data;
@@ -133,8 +133,10 @@ public class MessageController implements Messenger {
 
     @Override
     @PostMapping("/unsubscribe")
-    public Topic[] unsubscribe(@RequestBody Username username, @RequestBody Topic topic) {
+    public Topic[] unsubscribe(@RequestBody SubscriptionRequest subscriptionRequest) {
         synchronized (this) {
+            Username username = subscriptionRequest.getUsername();
+            Topic topic = subscriptionRequest.getTopic();
             List<Topic> list = new ArrayList<>();
             for (Subscription subscription : subscriptionMap.values()) {
                 if (subscription.getUsername().equals(username) && topic.match(subscription.getTopic())) {
@@ -148,9 +150,8 @@ public class MessageController implements Messenger {
         }
     }
 
-    //----------------------------------------------------------
-    // Lister les utilisateurs (GET)
-    //----------------------------------------------------------
+
+
     @Override
     @GetMapping("/users")
     public Username[] listUsers() {
@@ -168,9 +169,7 @@ public class MessageController implements Messenger {
         }
     }
 
-    //----------------------------------------------------------
-    // Lister tous les topics (GET)
-    //----------------------------------------------------------
+
     @Override
     @GetMapping("/topics")
     public Topic[] listTopics() {
@@ -181,20 +180,8 @@ public class MessageController implements Messenger {
         }
     }
 
-    @Override
-    public MessageId[] listMessages(Username username) {
-        return new MessageId[0];
-    }
 
-    @Override
-    public MessageId[] listMessages(Topic topic) {
-        return new MessageId[0];
-    }
-
-    //----------------------------------------------------------
-    // Lister les topics d'un utilisateur (GET)
-    //----------------------------------------------------------
-    @GetMapping("/topics/{username}")
+    @PostMapping("/topics/{username}")
     public Topic[] listTopics(@RequestBody Username username) {
         synchronized (this)
         {
@@ -209,9 +196,7 @@ public class MessageController implements Messenger {
         }
     }
 
-    //----------------------------------------------------------
-    // Lister les abonnés à un topic (GET)
-    //----------------------------------------------------------
+
     @GetMapping("/subscribers/{topic}")
     public Username[] listSubscribers(@RequestBody Topic topic) {
         synchronized (this)
@@ -227,11 +212,28 @@ public class MessageController implements Messenger {
         }
     }
 
-    @GetMapping("/topic/{topic}")
-    public MessageId[] listMessages(@PathVariable String topic) {
+    @PostMapping("/message/user/{username}")
+    public MessageId[] listMessages(@RequestBody Username username) {
         synchronized (this) {
-            TopicBackEnd backend = getTopicBackEnd(new Topic(topic));
-            return backend.messages.toArray(new MessageId[0]);
+            HashSet<MessageId> set = new HashSet<>();
+            for (Message message : messageMap.values()) {
+                if (message.getUsername().equals(username)) {
+                    set.add(message.getId());
+                }
+            }
+            MessageId[] data = set.toArray(new MessageId[set.size()]);
+            Arrays.sort(data);
+            return data;
+        }
+    }
+
+    @PostMapping("/message/topic/")
+    public MessageId[] listMessages(@RequestBody Topic topic) {
+        synchronized (this) {
+                TopicBackEnd backend = getTopicBackEnd(topic);
+            MessageId[] data = backend.messages.toArray(new MessageId[backend.messages.size()]);
+            Arrays.sort(data);
+            return data;
         }
     }
 
@@ -250,9 +252,6 @@ public class MessageController implements Messenger {
             }
         }
     }
-
-
-
 
     private static class TopicBackEnd
     {

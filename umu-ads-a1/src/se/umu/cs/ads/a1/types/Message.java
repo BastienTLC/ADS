@@ -1,5 +1,8 @@
 package se.umu.cs.ads.a1.types;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Message
   implements Comparable<Message>
 {
@@ -12,8 +15,14 @@ public class Message
 
 
   //----------------------------------------------------------
-  public Message (MessageId id, Timestamp timestamp, Username username, Topic topic, Content content, Data data)
-  {
+  @JsonCreator
+  public Message(
+          @JsonProperty("id") MessageId id,
+          @JsonProperty("timestamp") Timestamp timestamp,
+          @JsonProperty("username") Username username,
+          @JsonProperty("topic") Topic topic,
+          @JsonProperty("content") Content content,
+          @JsonProperty("data") Data data) {
     this.id = id;
     this.timestamp = timestamp;
     this.username = username;

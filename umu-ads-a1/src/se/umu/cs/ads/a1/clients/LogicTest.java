@@ -7,6 +7,7 @@ import se.umu.cs.ads.a1.types.Topic;
 import se.umu.cs.ads.a1.types.Username;
 import se.umu.cs.ads.a1.util.Util;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class LogicTest
@@ -37,6 +38,26 @@ public class LogicTest
         messenger.delete(message.getId());
         int nrMessagesAfterDelete = messenger.listMessages(username).length;
         if (nrMessagesAfterDelete != (nrMessagesBeforeDelete - 1))
+            throw new IllegalStateException("❌ testStoreAndDelete(): delete failure");
+        else
+            System.out.println("✅ testStoreAndDelete(): delete success");
+    }
+
+    public void testStoreAndDelete (Message[] messages) {
+        Username username = messages[0].getUsername();
+
+        int nrMessagesBeforeStore = messenger.listMessages(username).length;
+        messenger.store(messages);
+        int nrMessagesAfterStore = messenger.listMessages(username).length;
+        if (nrMessagesAfterStore != (nrMessagesBeforeStore + messages.length))
+            throw new IllegalStateException("❌ testStoreAndDelete(): store failure");
+        else
+            System.out.println("✅ testStoreAndDelete(): store success");
+
+        int nrMessagesBeforeDelete = nrMessagesAfterStore;
+        messenger.delete(Arrays.stream(messages).map(Message::getId).toArray(MessageId[]::new));
+        int nrMessagesAfterDelete = messenger.listMessages(username).length;
+        if (nrMessagesAfterDelete != (nrMessagesBeforeDelete - messages.length))
             throw new IllegalStateException("❌ testStoreAndDelete(): delete failure");
         else
             System.out.println("✅ testStoreAndDelete(): delete success");
@@ -94,4 +115,42 @@ public class LogicTest
             System.out.println("✅ testSubscribeAndUnsubscribe(): unsubscribe success");
     }
 
+    void testClearAllMessagesOfUser(Username username){
+        MessageId[] messages = messenger.listMessages(username);
+        messenger.delete(messages);
+        int nrMessagesAfterStore = messenger.listMessages(username).length;
+        if (nrMessagesAfterStore != 0)
+            throw new IllegalStateException("❌ testClearAllMessages(): delete failure");
+        else
+            System.out.println("✅ testClearAllMessages(): delete success");
+    }
+
+    void testClearAllMessageOfTopic(Topic topic){
+        MessageId[] messages = messenger.listMessages(topic);
+        messenger.delete(messages);
+        int nrMessagesAfterStore = messenger.listMessages(topic).length;
+        if (nrMessagesAfterStore != 0)
+            throw new IllegalStateException("❌ testClearAllMessages(): delete failure");
+        else
+            System.out.println("✅ testClearAllMessages(): delete success");
+    }
+
+    void testClearAllUserMessage(){
+      Username[] usernames = messenger.listUsers();
+        for (Username username : usernames) {
+            testClearAllMessagesOfUser(username);
+        }
+    }
+
+    void testClearAllTopicMessage(){
+        Topic[] topics = messenger.listTopics();
+        for (Topic topic : topics) {
+            testClearAllMessageOfTopic(topic);
+        }
+    }
+
+    public void testClearAllMessages(){
+        testClearAllUserMessage();
+        testClearAllTopicMessage();
+    }
 }

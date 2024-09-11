@@ -36,7 +36,7 @@ public class GrpcMessengerBackend  implements Messenger
 
             // Appel de la méthode storeMessage du serveur
             blockingStub.storeMessage(ProtoMessage);
-            System.out.println("Message successfully stored.");
+            //System.out.println("Message successfully stored.");
         } catch (StatusRuntimeException e) {
             System.err.println("RPC failed: " + e.getStatus());
         }
@@ -52,7 +52,7 @@ public class GrpcMessengerBackend  implements Messenger
             }
             MessengerOuterClass.MessageBatch ProtoMessages = ProtoMessagesBuilder.build();
             blockingStub.store(ProtoMessages);
-            System.out.println("Batch of messages successfully stored: " + messages.length + " messages");
+            //System.out.println("Batch of messages successfully stored: " + messages.length + " messages");
         } catch (StatusRuntimeException e) {
             System.err.println("RPC failed: " + e.getStatus());
         }
@@ -84,7 +84,7 @@ public class GrpcMessengerBackend  implements Messenger
             for (int i = 0; i < ProtoMessagesBatch.getMessagesCount(); i++) {
                 messages[i] = convertRpcMessage(ProtoMessagesBatch.getMessages(i));
             }
-            System.out.println("Batch of messages successfully retrieved: " + messages.length + " messages");
+            //System.out.println("Batch of messages successfully retrieved: " + messages.length + " messages");
             return messages;
         } catch (StatusRuntimeException e) {
             System.err.println("RPC failed: " + e.getStatus());
@@ -97,7 +97,7 @@ public class GrpcMessengerBackend  implements Messenger
         try {
             MessengerOuterClass.MessageId ProtoMessageId = MessengerOuterClass.MessageId.newBuilder().setValue(message.getValue()).build();
             blockingStub.deleteMessage(ProtoMessageId);
-            System.out.println("Message successfully deleted.");
+            //System.out.println("Message successfully deleted.");
         } catch (StatusRuntimeException e) {
             System.err.println("RPC failed: " + e.getStatus());
         }
@@ -113,7 +113,7 @@ public class GrpcMessengerBackend  implements Messenger
             }
             MessengerOuterClass.MessageIdBatch ProtoMessages = ProtoMessagesBuilder.build();
             blockingStub.deleteMessages(ProtoMessages);
-            System.out.println("Batch of messages successfully deleted: " + messages.length + " messages");
+            //System.out.println("Batch of messages successfully deleted: " + messages.length + " messages");
         } catch (StatusRuntimeException e) {
             System.err.println("RPC failed: " + e.getStatus());
         }
@@ -130,7 +130,7 @@ public class GrpcMessengerBackend  implements Messenger
             for (int i = 0; i < ProtoTopics.length; i++) {
                 topics[i] = new Topic(ProtoTopics[i].getValue());
             }
-            System.out.println("User successfully subscribed to " + topics.length + " topics.");
+            //System.out.println("User successfully subscribed to " + topics.length + " topics.");
             return topics;
         } catch (StatusRuntimeException e) {
             System.err.println("RPC failed: " + e.getStatus());
@@ -149,7 +149,7 @@ public class GrpcMessengerBackend  implements Messenger
             for (int i = 0; i < ProtoTopics.length; i++) {
                 topics[i] = new Topic(ProtoTopics[i].getValue());
             }
-            System.out.println("User successfully unsubscribed from " + topics.length + " topics.");
+            //System.out.println("User successfully unsubscribed from " + topics.length + " topics.");
             return topics;
         } catch (StatusRuntimeException e) {
             System.err.println("RPC failed: " + e.getStatus());
@@ -165,7 +165,7 @@ public class GrpcMessengerBackend  implements Messenger
             for (int i = 0; i < ProtoUsernames.length; i++) {
                 usernames[i] = new Username(ProtoUsernames[i].getValue());
             }
-            System.out.println("List of users successfully retrieved: " + usernames.length + " users");
+            //System.out.println("List of users successfully retrieved: " + usernames.length + " users");
             return usernames;
         } catch (StatusRuntimeException e) {
             System.err.println("RPC failed: " + e.getStatus());
@@ -181,7 +181,7 @@ public class GrpcMessengerBackend  implements Messenger
             for (int i = 0; i < ProtoTopics.length; i++) {
                 topics[i] = new Topic(ProtoTopics[i].getValue());
             }
-            System.out.println("List of topics successfully retrieved: " + topics.length + " topics");
+            //System.out.println("List of topics successfully retrieved: " + topics.length + " topics");
             return topics;
         } catch (StatusRuntimeException e) {
             System.err.println("RPC failed: " + e.getStatus());
@@ -198,7 +198,7 @@ public class GrpcMessengerBackend  implements Messenger
             for (int i = 0; i < ProtoTopics.size(); i++) {
                 topics[i] = new Topic(ProtoTopics.get(i).getValue());
             }
-            System.out.println("List of topics for user " + username.getValue() + " successfully retrieved: " + topics.length + " topics");
+            //System.out.println("List of topics for user " + username.getValue() + " successfully retrieved: " + topics.length + " topics");
             return topics;
         } catch (StatusRuntimeException e) {
             System.err.println("RPC failed: " + e.getStatus());
@@ -215,7 +215,7 @@ public class GrpcMessengerBackend  implements Messenger
             for (int i = 0; i < ProtoUsernames.length; i++) {
                 usernames[i] = new Username(ProtoUsernames[i].getValue());
             }
-            System.out.println("List of subscribers for topic " + topic.getValue() + " successfully retrieved: " + usernames.length + " users");
+            //System.out.println("List of subscribers for topic " + topic.getValue() + " successfully retrieved: " + usernames.length + " users");
             return usernames;
         } catch (StatusRuntimeException e) {
             System.err.println("RPC failed: " + e.getStatus());
@@ -232,7 +232,7 @@ public class GrpcMessengerBackend  implements Messenger
             for (int i = 0; i < ProtoMessageIds.length; i++) {
                 messageIds[i] = new MessageId(ProtoMessageIds[i].getValue());
             }
-            System.out.println("List of messages for user " + username.getValue() + " successfully retrieved: " + messageIds.length + " messages");
+            //System.out.println("List of messages for user " + username.getValue() + " successfully retrieved: " + messageIds.length + " messages");
             return messageIds;
         } catch (StatusRuntimeException e) {
             System.err.println("RPC failed: " + e.getStatus());
@@ -249,7 +249,7 @@ public class GrpcMessengerBackend  implements Messenger
             for (int i = 0; i < ProtoMessageIds.length; i++) {
                 messageIds[i] = new MessageId(ProtoMessageIds[i].getValue());
             }
-            System.out.println("List of messages for topic " + topic.getValue() + " successfully retrieved: " + messageIds.length + " messages");
+            //System.out.println("List of messages for topic " + topic.getValue() + " successfully retrieved: " + messageIds.length + " messages");
             return messageIds;
         } catch (StatusRuntimeException e) {
             System.err.println("RPC failed: " + e.getStatus());

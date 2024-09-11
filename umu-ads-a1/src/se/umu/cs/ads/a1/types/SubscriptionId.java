@@ -1,25 +1,26 @@
 package se.umu.cs.ads.a1.types;
 
-import java.util.UUID;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import se.umu.cs.ads.a1.adts.AbstractStringType;
 import se.umu.cs.ads.a1.util.Util;
 
-public class SubscriptionId extends AbstractStringType
-{
+import java.util.UUID;
+
+public class SubscriptionId extends AbstractStringType {
+
   //----------------------------------------------------------
-  public SubscriptionId (String value)
-  {
+  @JsonCreator
+  public SubscriptionId(@JsonProperty("value") String value) {
     super(value);
 
-    if (!Util.validateId(value))
+    if (!Util.validateId(value)) {
       throw new IllegalArgumentException(value);
+    }
   }
 
-
   //----------------------------------------------------------
-  //----------------------------------------------------------
-  public static SubscriptionId construct ()
-  {
+  public static SubscriptionId construct() {
     String value = UUID.randomUUID().toString();
     return new SubscriptionId(value);
   }
