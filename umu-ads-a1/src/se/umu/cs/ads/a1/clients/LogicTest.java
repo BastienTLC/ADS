@@ -1,10 +1,7 @@
 package se.umu.cs.ads.a1.clients;
 
 import se.umu.cs.ads.a1.interfaces.Messenger;
-import se.umu.cs.ads.a1.types.Message;
-import se.umu.cs.ads.a1.types.MessageId;
-import se.umu.cs.ads.a1.types.Topic;
-import se.umu.cs.ads.a1.types.Username;
+import se.umu.cs.ads.a1.types.*;
 import se.umu.cs.ads.a1.util.Util;
 
 import java.util.ArrayList;
@@ -113,6 +110,37 @@ public class LogicTest
             throw new IllegalStateException("❌ testSubscribeAndUnsubscribe(): unsubscribe failure");
         else
             System.out.println("✅ testSubscribeAndUnsubscribe(): unsubscribe success");
+    }
+
+    public void testWildCard(){
+        Username username = new Username("testusername");
+        Topic topic = new Topic("/test/logic1");
+        Topic topic2 = new Topic("/test/logic2");
+        Topic topic3 = new Topic("/test/logic*");
+
+        Message message = Message.construct(username, topic, Content.EMPTY, Data.EMPTY);
+        Message message2 = Message.construct(username, topic2, Content.EMPTY, Data.EMPTY);
+        messenger.store(message);
+        messenger.store(message2);
+        messenger.subscribe(username, topic3);
+        messenger.subscribe(username, topic3);
+        int nrUsersInTopic1After = messenger.listSubscribers(topic).length;
+        int nrUsersInTopic2After = messenger.listSubscribers(topic2).length;
+        if (nrUsersInTopic1After != nrUsersInTopic2After){
+            throw new IllegalStateException("❌ testWildCard(): subscribe failure");
+        }
+        else
+            System.out.println("✅ testWildCard(): subscribe success");
+
+        messenger.unsubscribe(username, topic3);
+        int nrUsersInTopic1AfterUnsubscribe = messenger.listSubscribers(topic).length;
+        int nrUsersInTopic2AfterUnsubscribe = messenger.listSubscribers(topic2).length;
+        if (nrUsersInTopic1AfterUnsubscribe != nrUsersInTopic2AfterUnsubscribe){
+            throw new IllegalStateException("❌ testWildCard(): unsubscribe failure");
+        }
+        else
+            System.out.println("✅ testWildCard(): unsubscribe success");
+
     }
 
     void testClearAllMessagesOfUser(Username username){

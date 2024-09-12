@@ -134,17 +134,20 @@ public class MessageController implements Messenger {
     @Override
     @PostMapping("/unsubscribe")
     public Topic[] unsubscribe(@RequestBody SubscriptionRequest subscriptionRequest) {
-        synchronized (this) {
+        synchronized (this)
+        {
             Username username = subscriptionRequest.getUsername();
             Topic topic = subscriptionRequest.getTopic();
-            List<Topic> list = new ArrayList<>();
-            for (Subscription subscription : subscriptionMap.values()) {
-                if (subscription.getUsername().equals(username) && topic.match(subscription.getTopic())) {
-                    delete(subscription.getId());
-                    list.add(subscription.getTopic());
-                }
-            }
-            Topic[] data = list.toArray(new Topic[0]);
+            ArrayList<Topic> list = new ArrayList<>();
+            for (Subscription subscription : subscriptionMap.values().toArray(new Subscription[subscriptionMap.size()]))
+                if (subscription.getUsername().equals(username))
+                    if (topic.match(subscription.getTopic()))
+                    {
+                        delete(subscription.getId());
+                        list.add(subscription.getTopic());
+                    }
+
+            Topic[] data = list.toArray(new Topic[list.size()]);
             Arrays.sort(data);
             return data;
         }
@@ -197,7 +200,7 @@ public class MessageController implements Messenger {
     }
 
 
-    @GetMapping("/subscribers/{topic}")
+    @PostMapping("/subscribers")
     public Username[] listSubscribers(@RequestBody Topic topic) {
         synchronized (this)
         {

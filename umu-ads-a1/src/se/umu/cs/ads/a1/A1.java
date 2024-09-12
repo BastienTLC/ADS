@@ -37,7 +37,7 @@ public class A1
     {
       // defaults to example messenger implementation
       final String[] arguments = Util.filterFlags(args);
-      final String fqn = arguments.length > 0 ? arguments[0] : InMemoryMessengerBackEnd.class.getCanonicalName();
+      final String fqn = arguments.length > 0 ? arguments[0] : GrpcMessengerBackend.class.getCanonicalName();
       // dynamic class loading for messenger instantiation
       Messenger messenger = loadMessenger(fqn);
 
@@ -65,7 +65,10 @@ public class A1
         test.testStoreAndRetrieve(Util.constructRandomMessage(username,topic,1024));
         test.testStoreAndRetrieve(Util.constructRandomMessages(username,topic,1024,10));
         test.testSubscribeAndUnsubscribe(username,topic);
+
         test.testClearAllMessages();
+        test.testWildCard();
+
       }
 
       // example performance test

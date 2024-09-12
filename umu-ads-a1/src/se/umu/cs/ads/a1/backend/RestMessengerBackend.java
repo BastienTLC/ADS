@@ -192,8 +192,8 @@ public class RestMessengerBackend implements Messenger {
             headers.setContentType(MediaType.APPLICATION_JSON);
             HttpEntity<Topic> request = new HttpEntity<>(topic, headers);
             ResponseEntity<Username[]> response = restTemplate.exchange(
-                    baseUrl + "/subscribers/" + topic.getValue(),
-                    HttpMethod.GET,
+                    baseUrl + "/subscribers",
+                    HttpMethod.POST,
                     request,
                     Username[].class
             );
