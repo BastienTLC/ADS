@@ -1,0 +1,2 @@
+nrMessages,payloadSize,sendTimeMs,receiveTimeMs,bandwidthSendMBps,bandwidthReceiveMBps,throughputSendNbMessagesPs,throughputReceiveNbMessagesPs
+50000,1024,385,361,132.98701298701297,141.82825484764544,129870.12987012987,138504.15512465374

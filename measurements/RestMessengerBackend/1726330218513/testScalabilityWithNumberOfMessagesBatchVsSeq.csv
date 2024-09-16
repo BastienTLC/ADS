@@ -1,0 +1,5 @@
+nrMessages,payloadSize,sequentialTime,batchTime
+1000,1024,715,22
+6000,1024,3433,62
+11000,1024,5632,93
+16000,1024,8907,135

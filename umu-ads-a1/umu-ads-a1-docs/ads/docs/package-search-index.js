@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"se.umu.cs.ads.a1"},{"l":"se.umu.cs.ads.a1.adts"},{"l":"se.umu.cs.ads.a1.backend"},{"l":"se.umu.cs.ads.a1.clients"},{"l":"se.umu.cs.ads.a1.interfaces"},{"l":"se.umu.cs.ads.a1.types"},{"l":"se.umu.cs.ads.a1.util"}]
